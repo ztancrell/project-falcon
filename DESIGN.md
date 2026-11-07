@@ -43,3 +43,5 @@ one dropped support. `install-driver.cmd` puts all of this in place with one men
     52 vs 58 FPS, slowest 1% of frames 37.5 vs 40, CPU at 1.5 vs 1.7 GHz, GPU hot spot peak 96 vs 93 °C.
   - On this machine the levers are a MorePowerTool undervolt, a higher minimum fan speed (Macs Fan Control writes SMC keys
     through MacHALDriver), and lowering CPU-heavy game settings.
+  - Full reports: [docs/apple-bootcamp-smc.md](docs/apple-bootcamp-smc.md) (SMC, fans, GPU power) and
+    [docs/apple-bootcamp-kernel.md](docs/apple-bootcamp-kernel.md) (Apple vs Falcon kernel).
