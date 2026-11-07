@@ -43,5 +43,11 @@ one dropped support. `install-driver.cmd` puts all of this in place with one men
     52 vs 58 FPS, slowest 1% of frames 37.5 vs 40, CPU at 1.5 vs 1.7 GHz, GPU hot spot peak 96 vs 93 °C.
   - On this machine the levers are a MorePowerTool undervolt, a higher minimum fan speed (Macs Fan Control writes SMC keys
     through MacHALDriver), and lowering CPU-heavy game settings.
+  - Fan test (same flag=1 setup): Macs Fan Control, both fans sensor-based (left on CPU PECI 49→90 °C, right on the GPU
+    sensor 44→54 °C, so full speed in games). In BF6 gameplay, frames at 58 FPS or more went from 51% to 94% of the time,
+    average FPS 53.8 to 58.8, slowest 1% of frames 40 to 44, CPU 1.7 to 2.3 GHz, and the GPU power limit 35 to 50 W.
+    The GPU hot spot peak stayed at 93 °C. BF6 is capped at 60 FPS (60 Hz built-in screen), and the CPU is still the
+    limit (about 16 ms per frame vs 11 ms for the GPU). This run was 5 minutes, and by the end the limits were dropping
+    (GPU limit 40 W, CPU 2.0 GHz). A 15-minute run is still needed to confirm the result once the laptop is fully hot.
   - Full reports: [docs/apple-bootcamp-smc.md](docs/apple-bootcamp-smc.md) (SMC, fans, GPU power) and
     [docs/apple-bootcamp-kernel.md](docs/apple-bootcamp-kernel.md) (Apple vs Falcon kernel).
