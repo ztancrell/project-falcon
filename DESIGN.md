@@ -7,11 +7,15 @@ Falcon doesn't ship AMD's binaries. The user downloads the official AMD package.
 PCI IDs and a catalog signed with the Project Falcon certificate, plus an older kernel (`amdkmdag.sys`) where the new
 one dropped support. `install-driver.cmd` puts all of this in place with one menu choice.
 
+**Current focus:** the best gaming frame rates on the MacBook Pro 16" 2019 (MacBookPro16,1) Radeon Pro 5500M 8GB.
+
 ## Open questions
 
 - **Root CA trust.** The cert's private key is public in this repo, and the cert is added to the Root and TrustedPublisher
   stores. That means anyone can sign code that every Falcon user's PC trusts. Should the installer remove it from Root
   after `pnputil` finishes? Would that break driver updates or reinstalls? This needs testing and the upstream dev's input.
+- **Apple-side GPU limits.** Do Apple's Boot Camp INF, MacHALDriver or SMC/thermal drivers cap the 5500M's power, clocks
+  or fans, compared with stock AMD? Research is in progress: Apple's Boot Camp drivers are being reverse-engineered with REA.
 - Upstream (icywire/project-falcon) has issues turned off. Changes go to upstream as PRs from the ztancrell fork.
 
 ## Decided
@@ -24,3 +28,7 @@ one dropped support. `install-driver.cmd` puts all of this in place with one men
   limiting, the next step is PowerShell.
 - 2026-11-04: Focus is user-friendliness: the installer detects the GPU and the extracted AMD package and recommends the
   menu option to pick.
+- 2026-11-07: Falcon stays focused on AMD GPU drivers. Fixing Apple's other Boot Camp drivers (keyboard, trackpad, audio
+  and so on) is out of scope: it wouldn't raise frame rates, and patched Apple kernel drivers can't be re-signed so that
+  Windows loads them normally (that needs test-signing mode or Microsoft signing). Apple's drivers are studied only for
+  limits they put on the GPU.
