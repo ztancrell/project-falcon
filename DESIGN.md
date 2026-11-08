@@ -14,6 +14,13 @@ one dropped support. `install-driver.cmd` puts all of this in place with one men
 - **Root CA trust.** The cert's private key is public in this repo, and the cert is added to the Root and TrustedPublisher
   stores. That means anyone can sign code that every Falcon user's PC trusts. Should the installer remove it from Root
   after `pnputil` finishes? Would that break driver updates or reinstalls? This needs testing and the upstream dev's input.
+- **Live tuning (AMD Software Tuning tab) on the 5500M.** 2026-11-07 test on MacBookPro16,1 (driver 26.9.2, kernel
+  32.0.21045.11001): the stock power table has every OverDrive feature off (GFX OD max 850 MHz). A MorePowerTool soft
+  PP table turning on GPU Clock Limit, GPU Clock Curve, Memory Clock Limit, Power Limit and Timing Tuning (GFX OD max
+  1550 MHz) was confirmed in the registry, but Tuning still showed only Resizable BAR. So some other block (kernel
+  workstation or init flags, or AMD Software itself) still hides it; no registry key for it is known. Kernel
+  31.0.14038.9001 reportedly shows Tuning on mobile cards but is untested with 26.9.2. Until then, undervolt through
+  MorePowerTool (stock: GFX 700–1050 mV, 300–1450 MHz, memory 750 MHz, 50 W, TDC 60/10 A).
 - Upstream (icywire/project-falcon) has issues turned off. Changes go to upstream as PRs from the ztancrell fork.
 
 ## Decided
